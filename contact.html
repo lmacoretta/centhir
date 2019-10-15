@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Contacto</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header__logo-box">
+        <img src="img/centhir-logo-1.jpg" alt="Logo" class="header__logo" />
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="/index.html" class="nav__link">Inicio</a>
+            </li>
+            <!-- <li class="nav__item">
+              <a href="/profesional.html" class="nav__link">Profesionales</a>
+            </li> -->
+            <li class="nav__item">
+              <a href="/contact.html" class="nav__link">Contacto</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="contact">
+      <form class="form" action="contact.php" method="POST">
+        <h2 class="heading-secondary">
+          Envía tu consulta
+        </h2>
+
+        <div class="form__group">
+          <div class="input-container">
+            <label class="form__label">Ingrese su nombre</label>
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Nombre"
+              required
+              min="4"
+              name="name"
+              pattern="[A-Z\sa-z]{3,20}"
+            />
+          </div>
+        </div>
+
+        <div class="form__group">
+          <div class="input-container">
+            <label class="form__label">Ingrese su apellido</label>
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Apellido"
+              required
+              min="4"
+              name="lastname"
+              pattern="[A-Z\sa-z]{3,20}"
+            />
+          </div>
+        </div>
+
+        <div class="form__group">
+          <div class="input-container">
+            <label class="form__label">Ingrese su email</label>
+            <input
+              type="email"
+              class="form__input"
+              placeholder="email@example.com"
+              required
+              name="email"
+            />
+          </div>
+        </div>
+
+        <div class="form__group">
+          <div class="input-container">
+            <label class="form__label">Razon del contacto</label>
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Me gustaria ponerme en contacto con ustedes"
+              required
+              name="title"
+            />
+          </div>
+        </div>
+
+        <div class="form__group">
+          <div class="input-container">
+            <label class="form__label">Ingrese su consulta</label>
+            <textarea
+              name="text"
+              cols="30"
+              rows="10"
+              class="form__area"
+              minlength="10"
+              maxlength="200"
+              placeholder="Diga lo que usted quiera"
+              name="content"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-secondary" name="send">Enviar</button>
+      </form>
+    </section>
+  </body>
+</html>

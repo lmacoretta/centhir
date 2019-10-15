@@ -1,0 +1,32 @@
+.footer {
+  padding: 4rem;
+  background-color: $color-grey-dark-3;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div {
+    color: $color-white;
+    font-size: 1.6rem;
+
+    @include respond(phone) {
+      font-size: 1.2rem;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__develop {
+    font-size: 1.2rem !important;
+
+    & > a {
+      color: $color-white;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+  }
+}

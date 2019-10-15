@@ -1,0 +1,30 @@
+.location {
+  justify-self: center;
+  margin-top: 8rem;
+
+  @include respond(phone) {
+    margin: 2rem;
+  }
+
+  &__icon {
+    height: 5rem;
+    width: 5rem;
+    margin-bottom: 1rem;
+    fill: $color-primary-dark;
+
+    &--social {
+      margin: 1rem 1rem 1rem 0;
+      padding-bottom: 1rem;
+    }
+
+    &--target {
+      fill: $color-primary-dark;
+    }
+  }
+
+  & > p {
+    font-size: $default-font-size;
+    display: flex;
+    flex-direction: column;
+  }
+}

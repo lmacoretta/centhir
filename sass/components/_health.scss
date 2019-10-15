@@ -1,0 +1,28 @@
+.section__health {
+  background-color: $color-grey-light;
+  padding-bottom: 2rem;
+
+  & > h2,
+  h3 {
+    margin: 3rem 0;
+  }
+
+  & > div {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  & > div > p {
+    font-size: 1.6rem;
+  }
+
+  & > ul > li {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    list-style: none;
+  }
+}
+
+.healt__img {
+  width: 90%;
+}
