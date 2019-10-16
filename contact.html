@@ -34,36 +34,21 @@
     </header>
 
     <section class="contact">
-      <form class="form" action="contact.php" method="POST">
+      <form class="form" action="contact.php" method="post">
         <h2 class="heading-secondary">
           Envía tu consulta
         </h2>
 
         <div class="form__group">
           <div class="input-container">
-            <label class="form__label">Ingrese su nombre</label>
+            <label class="form__label">Ingrese su nombre y apellido</label>
             <input
               type="text"
               class="form__input"
-              placeholder="Nombre"
+              placeholder="Nombre y Apellido"
               required
               min="4"
               name="name"
-              pattern="[A-Z\sa-z]{3,20}"
-            />
-          </div>
-        </div>
-
-        <div class="form__group">
-          <div class="input-container">
-            <label class="form__label">Ingrese su apellido</label>
-            <input
-              type="text"
-              class="form__input"
-              placeholder="Apellido"
-              required
-              min="4"
-              name="lastname"
               pattern="[A-Z\sa-z]{3,20}"
             />
           </div>

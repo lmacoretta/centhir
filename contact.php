@@ -1,24 +1,56 @@
 <?php
-try {
-    $nombre = $_POST['name'];
-    $mail = $_POST['email'];
-    $empresa = $_POST['message'];
+/**
+ * @version 1.0
+ */
 
-    $header = 'From: ' . $mail . " \r\n";
-    $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-    $header .= "Mime-Version: 1.0 \r\n";
-    $header .= "Content-Type: text/plain";
+require("class.phpmailer.php");
+require("class.smtp.php");
 
-    $mensaje = "Este mensaje fue enviado por " . $nombre . ",\r\n";
-    $mensaje .= "Su e-mail es: " . $mail . " \r\n";
-    $mensaje .= "Mensaje: " . $_POST['message'] . " \r\n";
-    $mensaje .= "Enviado el " . date('d/m/Y', time());
+// Valores enviados desde el formulario
+if ( !isset($_POST["name"]) || !isset($_POST["email"]) || !isset($_POST["message"]) || !isset($_POST["title"])) {
+    die ("Es necesario completar todos los datos del formulario");
+}
 
-    $para = 'leandrom@live.com.ar';
-    $asunto = 'Mensaje de mi sitio web';
+$nombre = $_POST["name"];
+$email = $_POST["email"];
+$mensaje = $_POST["message"];
+$title = $_POST["title"];
 
-    mail($para, $asunto, utf8_decode($mensaje), $header);
-    header("Location:index.html");
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// Datos de la cuenta de correo utilizada para enviar vía SMTP
+$smtpHost = "c1650335.ferozo.com";  // Dominio alternativo brindado en el email de alta 
+$smtpUsuario = "leandrom@live.com.ar";  // Mi cuenta de correo
+$smtpClave = "miPassword";  // Mi contraseña
+
+// Email donde se enviaran los datos cargados en el formulario de contacto
+$emailDestino = "leandrom@live.com.ar";
+
+$mail = new PHPMailer();
+$mail->IsSMTP();
+$mail->SMTPAuth = true;
+$mail->Port = 465; 
+$mail->SMTPSecure = 'ssl';
+$mail->IsHTML(true); 
+$mail->CharSet = "utf-8";
+
+
+// VALORES A MODIFICAR //
+$mail->Host = $smtpHost; 
+$mail->Username = $smtpUsuario; 
+$mail->Password = $smtpClave;
+
+$mail->From = $email; // Email desde donde envío el correo.
+$mail->FromName = $nombre;
+$mail->AddAddress($emailDestino); // Esta es la dirección a donde enviamos los datos del formulario
+
+$mail->Subject = $title; // Este es el titulo del email.
+$mensajeHtml = nl2br($mensaje);
+$mail->Body = "{$mensajeHtml} <br /><br />Formulario de ejemplo. By DonWeb<br />"; // Texto del email en formato HTML
+$mail->AltBody = "{$mensaje} \n\n Formulario de ejemplo By DonWeb"; // Texto sin formato HTML
+// FIN - VALORES A MODIFICAR //
+
+$estadoEnvio = $mail->Send(); 
+if($estadoEnvio){
+    echo "El correo fue enviado correctamente.";
+} else {
+    echo "Ocurrió un error inesperado.";
 }
